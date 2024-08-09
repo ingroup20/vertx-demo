@@ -41,6 +41,14 @@
       <artifactId>vertx-core</artifactId>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/io.vertx/vertx-web -->
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-web</artifactId>
+      <version>4.5.9</version>
+    </dependency>
+
+
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-junit5</artifactId>
