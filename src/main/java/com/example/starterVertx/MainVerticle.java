@@ -32,6 +32,7 @@ public class MainVerticle extends AbstractVerticle {
       );
     });
     //can run on port 8888 and test with http://localhost:8888/?name=myName
+    //note: address maybe 0:0:0:0:0:0:0:1:32806 not equal to port 8888
 
 
     // Create the HTTP server
@@ -41,10 +42,12 @@ public class MainVerticle extends AbstractVerticle {
       // Start listening
       .listen(8888)
       // Print the port
-      .onSuccess(server ->
-        System.out.println("HTTP server started on port " + server.actualPort())
-      )
+      .onSuccess(server -> {
+        startPromise.complete();
+        System.out.println("HTTP server started on port " + server.actualPort());
+      })
       .onFailure(throwable -> {
+        startPromise.fail(throwable);
         System.out.println("HTTP server failed to start");
       });
   }
